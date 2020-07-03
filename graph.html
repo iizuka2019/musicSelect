@@ -1,0 +1,322 @@
+<html>
+
+  <head>
+	<meta name="robots" content="noindex,follow" />	  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="cushion.css" />
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/jquery.circliful.css">
+    <link rel="stylesheet" href="css/font-icon.css">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>週間情報</title>
+    <style type="text/css">
+.gnav__menu{
+	display: flex;
+        font-family: "M PLUS Rounded 1c"
+}
+.gnav__menu__leftitem{
+	width: 5%;
+	list-style: none;
+}
+.gnav__menu__centeritem{
+	width: 80%;
+	list-style: none;
+}
+.gnav__menu__rightitem{
+	width: 10%;
+	list-style: none;
+}
+    p.wf-roundedmplus1c { font-family: "M PLUS Rounded 1c";}
+      p.wf-roundedmplus1c_title {
+        font-family: "M PLUS Rounded 1c"
+        line-height : normal ;
+        border-bottom : 1px solid gray ;
+      }
+    </style>
+
+    
+   </head>
+
+  <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/jquery.circliful.js"></script>
+    
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    
+    
+    <script>
+ $(function(){
+ var aTags = $('a'); //ページ内のaタグ群を取得。aTagsに配列として代入。
+ aTags.each(function(){ //全てのaタグについて処理
+ var url = $(this).attr('href');//aタグのhref属性からリンク先url取得
+　　　$(this).removeAttr('href');//念のため、href属性は削除
+ $(this).click(function(){//クリックイベントをバインド
+ location.href = url;
+ });
+ });
+ });
+	    
+        // Initialize Firebase
+      
+        var config = {
+            apiKey: "AIzaSyAmSempEJ9w0lu8yYkFbdmpgI8nnlOC_YU",
+            authDomain: "enebular-motion.firebaseapp.com",
+            databaseURL: "https://enebular-motion.firebaseio.com",
+            projectId: "enebular-motion",
+            storageBucket: "enebular-motion.appspot.com",
+            messagingSenderId: "367617695978",
+            appId: "1:367617695978:web:8c3e2b04447dc024"
+        };
+        firebase.initializeApp(config);
+    </script>
+    
+    
+<section class="container">
+
+
+  
+    
+    <!-- Title -->
+<p class="wf-roundedmplus1c">
+	<nav class="gnav">
+		 <ul class="gnav__menu">
+			<li class="gnav__menu__leftitem"><a href="http://cilicill.com/mypage.html"><i class="fa fa-user-o fa-lg"></i></a></li>
+			<li class="gnav__menu__centeritem">CiliCill -シリシル-</li>
+			<li class="gnav__menu__rightitem"><a href="http://cilicill.com/index.html"><i class="fa fa-home fa-lg"></i></a></li>
+		</ul>
+	</nav>
+</p>
+	
+
+<p class="wf-roundedmplus1c">
+  <table class="device-info-table">
+    <tr>
+      <td colspan="2" align="center"><span id="status"></span></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><span id="statusMan"></span></td>
+    </tr>
+  </table>
+</p>
+    
+      <input type="HIDDEN" name="TargetDate" id="TargetDate-text" >
+      <input type="HIDDEN" name="GraphLabel" id="GraphLabel-text" >
+
+      <!-- Device Info Table -->
+<hr>
+  
+
+<p class="wf-roundedmplus1c">  
+	<table class="device-info-table">
+		<tr>
+			<td colspan="2" align="center">
+				<div style="width: 100%; height: 400">
+				<canvas id="myChart" style="width: 100%; height: 100%;"/>
+				</div>
+			</td>
+		</tr>
+	</table>
+</p>
+
+  
+</section>
+    
+    
+  <script>
+
+var canvas = document.getElementById('myChart');
+var ctx = canvas.getContext('2d');
+    
+var date = new Date();
+var before = new Date();
+var week = [];
+var weekStand = [];
+var weekSitt = [];
+var strValue=0;
+	  
+	  
+	  
+	 
+	  
+let promise = new Promise((resolve, reject) => { // #1
+
+for(var i = 0;i < 7;i++) {
+	before.setDate(date.getDate() - i);
+	week.unshift(before.getMonth() + 1 + '月' + before.getDate() + '日');
+	
+	var strYearG=before.getFullYear();
+	var strMonthG=dateToStrPad0Month(before.getMonth() + 1 );
+	var strDayG=dateToStrPad0Day(before.getDate());
+	
+
+	firebase.database().ref('/' + strYearG + strMonthG + strDayG + '/').once('value',function(snapshot) {
+		weekStand.unshift(snapshot.child("Standtime").val());
+		weekSitt.unshift(Math.round((Number(snapshot.child("stsum").val())/60/60) * 10)/10 );
+		
+	});	
+ 
+}
+
+	
+	
+	console.log('#1')
+  resolve('Hello ')
+})
+
+promise.then((msg) => { // #2
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+
+	    
+	    
+      console.log('#2')
+      resolve(msg + "I'm ")
+    }, 500)
+  })
+}).then((msg) => { // #3
+  console.log('#3')
+	
+setTimeout(() => {
+new Chart(
+  ctx, 
+  {
+    type: 'bar',
+    data: {
+      labels: week,
+      datasets: [
+        {
+          type: 'line',
+          label: '立上り回数',
+          backgroundColor: 'rgb(33, 33, 33)',
+          borderColor: 'rgb(33, 33, 33)',
+          fill: false,
+          yAxisID: 'yaxis2',
+          tension: 0,
+	  data:weekStand
+        },
+        {
+          type: 'bar',
+          label: '累計座位時間',
+          stack: 'なし',
+          backgroundColor: 'rgb(220, 215, 80)',
+          yAxisID: 'yaxis1',
+          data:weekSitt
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      legend: {
+        position: 'bottom'
+      },
+      scales: {
+        xAxes: [
+          { stacked: true }
+        ],
+        yAxes: [
+          { 
+            id: 'yaxis1',
+            position: 'left',
+            scaleLabel: {
+              display: true,
+              labelString: '累計座位時間(日)',
+            },
+            ticks: {
+              max: 12,
+              min: 0,
+            },
+            stacked: true 
+          },
+          { 
+            id: 'yaxis2',
+            position: 'right',
+            scaleLabel: {
+              display: true,
+              labelString: '立上り回数(日)',
+            },
+            ticks: {
+              max: 300,
+              min: 0,
+            },
+            gridLines: {
+              drawOnChartArea: false, 
+            },
+          }
+        ]
+      }
+    },
+  }
+)	
+
+}, 2000)
+	
+	
+
+	
+  return msg + 'Jeccy.'
+}).then((msg) => { // #4
+  console.log('#4')
+  console.log(msg)
+}).catch(() => { // エラーハンドリング
+  console.error('Something wrong!')
+})
+	  
+	
+	  
+	  
+
+	  
+	  
+	  
+
+      
+	function dateToStrPad0Day(date) {
+		var format = "DD";
+		format = format.replace(/DD/g, ('0' + date).slice(-2));
+		return format;
+	}
+
+	function dateToStrPad0Month(date) {
+		var format = "MM";
+		format = format.replace(/MM/g, ('0' + date).slice(-2));
+		return format;
+	}
+          	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+
+ 	 
+  </script>
+  </body>
+
+</html>
