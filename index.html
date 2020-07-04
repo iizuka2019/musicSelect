@@ -108,9 +108,12 @@ $(function(){
         	document.getElementById("musicstart").innerHTML = "サイセイシテナイ..."
 	        //document.getElementById("musicno").innerHTML =  "今は:" + snapshot.child("musicno").val() + "の曲";
 		
+        	document.getElementById("load").innerHTML =""
 	}else{
         	document.getElementById("musicstart").innerHTML = "--サイセイチュウ--"
         	document.getElementById("musicno").innerHTML =  "今は:" + snapshot.child("musicno").val() + "番目の曲をサイセイしてるよ。";
+        	document.getElementById("load").innerHTML =<img src="svg-loaders/audio.svg" />
+
         }
 	      
       });
@@ -170,7 +173,7 @@ $(function(){
       <td colspan="2" align="center"><span id="musicstart"  ></span></td>
     </tr>
     <tr>
-      <td colspan="2" align="center"><img src="svg-loaders/audio.svg" />
+      <td colspan="2" align="center"><span id="load"  ></span>
       </td>
     </tr>
   </table>
