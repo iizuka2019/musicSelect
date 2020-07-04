@@ -96,29 +96,10 @@ $(function(){
     
     <script>
     //読み込み処理
-      var today = new Date();
-      var strYear=today.getFullYear();
-      var strMonth=dateToStrPad0Month(today.getMonth()+1);
-      var strDay=dateToStrPad0Day(today.getDate());
       var strDataW = '0';
-      
-      function dateToStrPad0Day(date) {
-        var format = "DD";
-        format = format.replace(/DD/g, ('0' + date).slice(-2));
-        return format;
-      }
-      
-      function dateToStrPad0Month(date) {
-        var format = "MM";
-        format = format.replace(/MM/g, ('0' + date).slice(-2));
-        return format;
-      }
-      //' + strYear + strMonth + strDay + '
 
-      //alert(strYear + strMonth+strDay);
-
-      firebase.database().ref('/' + strYear + strMonth+strDay + '/').on('value',function(snapshot) {
-        document.getElementById("Sittingtime").innerHTML = snapshot.child("Sittingtime").val();
+      firebase.database().ref('/id0083/').on('value',function(snapshot) {
+        document.getElementById("Sittingtime").innerHTML = "距離:" + snapshot.child("distance").val();
 
         if(snapshot.child("stay").val()=="0") {
             document.getElementById("statusMan").innerHTML = "いま、すわってないよー"
@@ -127,18 +108,9 @@ $(function(){
         }
 
         strDataW=snapshot.child("stsum").val();
-        var strdataH =0;
-        strDataW =  Math.round((Number(strDataW)/60/60) * 10)/10;
-        strdataH =  strDataW;
-        strDataW =  (Number(strDataW)/24*100);
-        
-        document.getElementById("st-sum").innerHTML = strdataH + "時間／24時間"
         
         
         document.getElementById("Standtime").innerHTML = snapshot.child("Standtime").val();  
-        document.getElementById("status").innerHTML =strYear + '年' + strMonth + '月' + strDay + '日'
-        //document.getElementById("status").innerHTML ='2019年' + '09月' + '03日'
-        //document.getElementById("TargetDate-text").innerHTML =today
         document.getElementById("TargetDate-text").innerHTML =strYear + strMonth + strDay
       });
 
