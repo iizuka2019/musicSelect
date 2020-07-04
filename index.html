@@ -149,9 +149,9 @@ $(function(){
         var txtVolume = document.getElementById("musicvolume").value;
         
         if (txtplay == "0"){
-        myChatAll.set({musicstart:0});
+        	myChatAll.set({musicstart:0});
         }else{
-        myChatAll.set({musicstart:1});
+        	myChatAll.set({musicstart:1});
         }
         //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight,weight:"0.1",Sittingtime:"16" ,Standtime:"41"});
         //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight});
@@ -209,7 +209,9 @@ $(function(){
 	  <td colspan="2" align="center">コントローラ</td>
         </tr>	  
 	<tr>
-          <td colspan="2" align="center" class="liffinput" id="play"><img src="svg-loaders/down.svg"></td>
+          <td colspan="2" align="center">
+		<input type="image" class="liffinput" name="play"  id="play" onchange="changeData()">
+		</td>
         </tr>	  
 	  
 	</table>
