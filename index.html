@@ -159,13 +159,18 @@ $(function(){
 		
 	});
 		       
-		       
-
-        
+		
         //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight,weight:"0.1",Sittingtime:"16" ,Standtime:"41"});
         //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight});
       }
-      
+             
+ 	function changeDatavolume(){
+	      
+	firebase.database().ref('/id0083/').once('value',function(snapshot) {
+		var strStart =snapshot.child("musicvolume").val();
+		myChatAll.update({musicstart:strStart});		
+	});
+       } 
     </script>
 	  
 	  
@@ -235,7 +240,7 @@ $(function(){
 	  <td colspan="2" align="center">ボリューム</td>
         </tr>	  
 	<tr>
-	  <td colspan="2" align="center"><input id="range01" type="range" id="volume" min="0" max="150" step="10" value="0" list="scale" onchange="changeData()" /></td>
+	  <td colspan="2" align="center"><input id="range01" type="range" id="volume" min="0" max="150" step="10" value="0" list="scale" onchange="changeDatavolume()" /></td>
         </tr>	  
 	      
         <tr>
