@@ -144,11 +144,12 @@ $(function(){
 
 	
 <p class="wf-roundedmplus1c">
-	<nav class="gnav">
-		 <ul class="gnav__menu">
-			<li class="gnav__menu__centeritem"><a href="https://iizuka2019.github.io/musicSelect/">気分転換ブース</a></li>
-		</ul>
-	</nav>
+
+	<table class="device-info-table">
+		<tr>
+			<td colspan="2" align="center">気分転換ブース</td>
+		</tr>
+	</table>	
 </p>
 	  
 <hr>
@@ -169,24 +170,27 @@ $(function(){
     </tr>
   </table>
 </p>
-    
-      <input type="HIDDEN" name="TargetDate" id="TargetDate-text" >
-
       <!-- Device Info Table -->
 <hr>
   
 <p class="wf-roundedmplus1c">
       <table class="device-info-table">
 	<tr>
-          <th>コントローラ</th>
-          <td class="liffinput" id="play">再生ボタン</td>
-          <td class="liffinput" id="stop">停止ボタン</td>
-          <td class="liffinput" id="resume">一時停止ボタン</td>
+          <th colspan="2" align="center">コントローラ</th>
         </tr>	  
 	<tr>
-          <th>ボリューム</th>
-          <td class="liffinput" id="up">音量上げるボタン</td>
-          <td class="liffinput" id="down">音量下げるボタン</td>
+          <td class="liffinput" id="play">再生</td>
+          <td class="liffinput" id="stop">停止</td>
+        </tr>	  
+	<tr>
+          <td colspan="2" align="center" class="liffinput" id="resume">一時停止</td>
+        </tr>	  
+	<tr>
+          <th colspan="2" align="center">ボリューム</th>
+        </tr>	  
+	<tr>
+          <td class="liffinput" id="up">音量上げる</td>
+          <td class="liffinput" id="down">音量下げる</td>
         </tr>	  
 	      
         <tr>
