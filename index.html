@@ -92,7 +92,7 @@ $(function(){
     //読み込み処理
       var strDataW = '0';
 
-      firebase.database().ref('/id0083/').once('value',function(snapshot) {
+      firebase.database().ref('/id0083/').on('value',function(snapshot) {
         document.getElementById("distance").innerHTML = "距離:" + snapshot.child("distance").val();
 
         if(snapshot.child("stay").val()=="0") {
@@ -221,7 +221,7 @@ $(function(){
         </tr>	  
 	<tr>
           <td colspan="2" align="center">
-		<a href="" class="liffinput" id="play" onclick="changeData();"></a>
+		<a href="" class="liffinput" id="play" onclick="changeData();return false;"></a>
 		 <!-- <img src="svg-loaders/resume.png" height="42" width="42" /> -->
 		</td>
 		
