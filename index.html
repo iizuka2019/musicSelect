@@ -107,13 +107,11 @@ $(function(){
             document.getElementById("stay").innerHTML = "いま、すわってるよ。"
         }
 
-        //strDataW=snapshot.child("stsum").val();
         
         
         document.getElementById("musicno").innerHTML = snapshot.child("musicno").val();
         document.getElementById("musicStart").innerHTML = snapshot.child("musicstart").val();
 	      
-        document.getElementById("TargetDate-text").innerHTML =strYear + strMonth + strDay
       });
 
       firebase.database().ref('/myinfo/').on('value',function(snapshot) {
@@ -140,34 +138,6 @@ $(function(){
 
 
   
-  
-    <script>
-      function handlerToggleLed(strLR) {
-        if(strLR == "left"){
-          var today = document.getElementById("TargetDate-text").innerHTML;
-          today.setDate(today.getDate() - 1);          
-          
-          var strYear=today.getFullYear();
-          
-          var strMonth=dateToStrPad0Month(today.getMonth()+1);
-          var strDay=dateToStrPad0Day(today.getDate());
-      
-      function dateToStrPad0Day(date) {
-        var format = "DD";
-        format = format.replace(/DD/g, ('0' + date).slice(-2));
-        return format;
-      }
-      
-      function dateToStrPad0Month(date) {
-        var format = "MM";
-        format = format.replace(/MM/g, ('0' + date).slice(-2));
-        return format;
-      }
-          
-          document.getElementById("status").innerHTML =strYear + '年' + strMonth + '月' + strDay + '日'
-        }
-      }
-    </script>
   
     
     <!-- Title -->
@@ -207,24 +177,7 @@ $(function(){
   
 <p class="wf-roundedmplus1c">
       <table class="device-info-table">
-        <tr>
-          <th>きょり：</th>
-          <td class="liffinput" id="distance">秒</td>
-        </tr>
-	      
-        <tr>
-          <th>いるかいないか：</th>
-          <td class="liffinput" id="stay">いる</td>          
-        </tr>
-        <tr>
-          <th>選曲：</th>
-          <td class="liffinput" id="musicno">曲</td>
-        </tr>
-        <tr>
-          <th>再生：</th>
-          <td class="liffinput" id="musicstart">再生してる？</td>
-        </tr>
-	      
+	  
         <tr>
           <td colspan="2" align="center">
             <div class="col-lg-2">
