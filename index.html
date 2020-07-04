@@ -109,8 +109,14 @@ $(function(){
 
         
         
-        document.getElementById("musicno").innerHTML = snapshot.child("musicno").val();
-        document.getElementById("musicStart").innerHTML = snapshot.child("musicstart").val();
+        document.getElementById("musicno").innerHTML =  "今は:" + snapshot.child("musicno").val() + "の曲";
+	      
+	if(snapshot.child("musicstart").val()=="0") {
+        	document.getElementById("musicstart").innerHTML = "サイセイシテナイ..."
+		
+	}else{
+            document.getElementById("musicstart").innerHTML = "--さいせいちゅう--"
+        }
 	      
       });
 
