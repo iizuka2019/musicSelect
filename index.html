@@ -148,7 +148,9 @@ $(function(){
       function changeData(){
 	      
 	firebase.database().ref('/id0083/').on('value',function(snapshot) {
-		if (snapshot.child("musicstart").val() == "0"){
+		var strStart =snapshot.child("musicstart").val();
+		
+		if (strStart == "0"){
 			myChatAll.update({musicstart:1});
 		}else{
 			myChatAll.update({musicstart:0});
