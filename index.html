@@ -105,14 +105,14 @@ $(function(){
         
 	      
 	if(snapshot.child("musicstart").val()=="0") {
-        	document.getElementById("musicstart").innerHTML = "サイセイシテナイ..."
-	        //document.getElementById("musicno").innerHTML =  "今は:" + snapshot.child("musicno").val() + "の曲";
-		
+        	document.getElementById("musicstart").innerHTML = "サイセイシテナイ..."	
         	document.getElementById("load").innerHTML =""
+        	document.getElementById("play").innerHTML ="<img src='svg-loaders/play.png'>";
 	}else{
-        	document.getElementById("musicstart").innerHTML = "--サイセイチュウ--"
-        	document.getElementById("musicno").innerHTML =  "今は:" + snapshot.child("musicno").val() + "番目の曲をサイセイしてるよ。";
+        	document.getElementById("musicstart").innerHTML = "--さいせいちゅう--"
+        	document.getElementById("musicno").innerHTML =  "今は" + snapshot.child("musicno").val() + "番目の曲をサイセイしてるよ。";
         	document.getElementById("load").innerHTML ="<img src='svg-loaders/audio.svg'>";
+        	document.getElementById("play").innerHTML ="<img src='svg-loaders/resume.png'>";
 			
         }
 	      
@@ -187,12 +187,9 @@ $(function(){
 	  <td colspan="2" align="center">コントローラ</td>
         </tr>	  
 	<tr>
-          <td class="liffinput" id="play">再生</td>
-          <td class="liffinput" id="stop">停止</td>
+          <td colspan="2" align="center" class="liffinput" id="play"><img src="svg-loaders/down.svg"></td>
         </tr>	  
-	<tr>
-          <td colspan="2" align="center" class="liffinput" id="resume">一時停止</td>
-        </tr>	  
+	  
 	</table>
 	
 	<table class="device-info-table">	      
@@ -200,8 +197,8 @@ $(function(){
 	  <td colspan="2" align="center">ボリューム</td>
         </tr>	  
 	<tr>
-          <td class="liffinput" id="up">音量上げる</td>
-          <td class="liffinput" id="down">音量下げる</td>
+          <td class="liffinput" id="down"><img src="svg-loaders/down.png"></td>
+          <td class="liffinput" id="up"><img src="svg-loaders/up.png"></td>
         </tr>	  
 	      
         <tr>
