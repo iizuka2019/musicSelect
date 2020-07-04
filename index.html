@@ -102,20 +102,21 @@ $(function(){
         document.getElementById("distance").innerHTML = "距離:" + snapshot.child("distance").val();
 
         if(snapshot.child("stay").val()=="0") {
-            document.getElementById("stay").innerHTML = "いま、すわってないよー"
+            document.getElementById("stay").innerHTML = "いないよ"
         }else{
-            document.getElementById("stay").innerHTML = "いま、すわってるよ。"
+            document.getElementById("stay").innerHTML = "いるよ。"
         }
 
         
         
-        document.getElementById("musicno").innerHTML =  "今は:" + snapshot.child("musicno").val() + "の曲";
 	      
 	if(snapshot.child("musicstart").val()=="0") {
         	document.getElementById("musicstart").innerHTML = "サイセイシテナイ..."
+	        //document.getElementById("musicno").innerHTML =  "今は:" + snapshot.child("musicno").val() + "の曲";
 		
 	}else{
-            document.getElementById("musicstart").innerHTML = "--さいせいちゅう--"
+        	document.getElementById("musicstart").innerHTML = "--サイセイチュウ--"
+        	document.getElementById("musicno").innerHTML =  "今は:" + snapshot.child("musicno").val() + "番目の曲をサイセイしてるよ。";
         }
 	      
       });
@@ -195,26 +196,6 @@ $(function(){
 </p>
   
 
- 
-<p class="wf-roundedmplus1c">
-<!--ツイートボタン-->
-<a id="twitter_button" >一日の結果をつぶやくよ。</a>
-</p>
-   
-<script>
-//ツイートボタンが押された時の処理
-$('#twitter_button').click(function() {
-    //出目をHTMLから取得する
-    var strSit = document.getElementById("st-sum").innerHTML;
-    var strStandCount = document.getElementById("Standtime").innerHTML;
-　　//ツイート内容をセット
-　　var tw_contents = ("結果報告：今日は" + strSit + "座っていたよ。立ち上がった回数は" + strStandCount + "回だよーやばいよー");
-　　var tw_tag = ("座ってる時間#立ち上がれ日本人");
-    var url = "https://www.takano-hw.com/";
-  //#twitter_buttonのhrefにパラメーターを渡す
-　　window.open().location.href = ("https://twitter.com/share?url=" + url + "&text=" + tw_contents + "&hashtags=" + tw_tag +"&count=none&lang=ja");
-});
-</script>
   
 </section>
     
