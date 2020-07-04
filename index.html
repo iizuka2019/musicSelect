@@ -94,8 +94,7 @@ $(function(){
 
       firebase.database().ref('/id0083/').on('value',function(snapshot) {
         document.getElementById("distance").innerHTML = "距離:" + snapshot.child("distance").val();
-        document.getElementById("volume").innerText = snapshot.child("musicvolume").val();
-
+        document.getElementById("volume").value = snapshot.child("musicvolume").val();
         if(snapshot.child("stay").val()=="0") {
             document.getElementById("stay").innerHTML = "いないよ"
         }else{
