@@ -99,18 +99,20 @@ $(function(){
       var strDataW = '0';
 
       firebase.database().ref('/id0083/').on('value',function(snapshot) {
-        document.getElementById("Sittingtime").innerHTML = "距離:" + snapshot.child("distance").val();
+        document.getElementById("distance").innerHTML = "距離:" + snapshot.child("distance").val();
 
         if(snapshot.child("stay").val()=="0") {
-            document.getElementById("statusMan").innerHTML = "いま、すわってないよー"
+            document.getElementById("stay").innerHTML = "いま、すわってないよー"
         }else{
-            document.getElementById("statusMan").innerHTML = "いま、すわってるよ。"
+            document.getElementById("stay").innerHTML = "いま、すわってるよ。"
         }
 
-        strDataW=snapshot.child("stsum").val();
+        //strDataW=snapshot.child("stsum").val();
         
         
-        document.getElementById("Standtime").innerHTML = snapshot.child("Standtime").val();  
+        document.getElementById("musicno").innerHTML = snapshot.child("musicno").val();
+        document.getElementById("musicStart").innerHTML = snapshot.child("musicstart").val();
+	      
         document.getElementById("TargetDate-text").innerHTML =strYear + strMonth + strDay
       });
 
@@ -184,10 +186,16 @@ $(function(){
 <p class="wf-roundedmplus1c">
   <table class="device-info-table">
     <tr>
-      <td colspan="2" align="center"><span id="status"  ></span></td>
+      <td colspan="2" align="center"><span id="distance"  ></span></td>
     </tr>
     <tr>
-      <td colspan="2" align="center"><span id="statusMan"  ></span></td>
+      <td colspan="2" align="center"><span id="stay"  ></span></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><span id="musicno"  ></span></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><span id="musicstart"  ></span></td>
     </tr>
   </table>
 </p>
@@ -210,7 +218,11 @@ $(function(){
         </tr>
         <tr>
           <th>選曲：</th>
-          <td class="liffinput" id="music">曲</td>
+          <td class="liffinput" id="musicno">曲</td>
+        </tr>
+        <tr>
+          <th>再生：</th>
+          <td class="liffinput" id="musicstart">再生してる？</td>
         </tr>
 	      
         <tr>
