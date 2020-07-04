@@ -167,7 +167,7 @@ $(function(){
  	function changeDatavolume(){
 	      
 	firebase.database().ref('/id0083/').once('value',function(snapshot) {
-		var strVolume =snapshot.child("musicvolume").val();
+		var strVolume =document.getElementById("volume").value;
 		myChatAll.update({musicvolume:strVolume});		
 	});
        } 
