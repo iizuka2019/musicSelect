@@ -146,16 +146,19 @@ $(function(){
       
       var myChatAll = db.ref("/id0083/");
       function changeData(){
-	//myChatAll.update({musicstart:0});
+	      
+	firebase.database().ref('/id0083/').on('value',function(snapshot) {
+		if (snapshot.child("playstatus").val() == "0"){
+			myChatAll.update({musicstart:1});
+		}else{
+			myChatAll.update({musicstart:0});
+		}
+		
+	}
+		       
+		       
 
-        var txtplay = document.getElementById("playstatus").value;
-        //var txtVolume = document.getElementById("musicvolume").value;
         
-        if (txtplay == "0"){
-        	myChatAll.update({musicstart:1});
-        }else{
-        	myChatAll.update({musicstart:0});
-        }
         //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight,weight:"0.1",Sittingtime:"16" ,Standtime:"41"});
         //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight});
       }
