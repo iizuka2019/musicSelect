@@ -147,7 +147,7 @@ $(function(){
       var myChatAll = db.ref("/id0083/");
       function changeData(){
 	      
-	firebase.database().ref('/id0083/').on('value',function(snapshot) {
+	firebase.database().ref('/id0083/').once('value',function(snapshot) {
 		var strStart =snapshot.child("musicstart").val();
 		
 		if (strStart == "0"){
