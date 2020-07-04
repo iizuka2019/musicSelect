@@ -94,6 +94,7 @@ $(function(){
 
       firebase.database().ref('/id0083/').on('value',function(snapshot) {
         document.getElementById("distance").innerHTML = "距離:" + snapshot.child("distance").val();
+        document.getElementById("volume").innerHTML = snapshot.child("musicvolume").val();
 
         if(snapshot.child("stay").val()=="0") {
             document.getElementById("stay").innerHTML = "いないよ"
@@ -234,8 +235,7 @@ $(function(){
 	  <td colspan="2" align="center">ボリューム</td>
         </tr>	  
 	<tr>
-          <td class="liffinput" id="down"><img src="svg-loaders/down.png" height="42" width="42"></td>
-          <td class="liffinput" id="up"><img src="svg-loaders/up.png" height="42" width="42"></td>
+	  <td colspan="2" align="center"><input id="range01" type="range" id="volume" min="0" max="150" step="10" value="0" list="scale" onchange="changeData()" /></td>
         </tr>	  
 	      
         <tr>
