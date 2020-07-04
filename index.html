@@ -145,14 +145,16 @@ $(function(){
       
       var myChatAll = db.ref("/id0083/");
       function changeData(){
-        var txtplay = document.getElementById("playstatus").value;
-        var txtVolume = document.getElementById("musicvolume").value;
+	myChatAll.set({musicstart:0});
+
+        //var txtplay = document.getElementById("playstatus").value;
+        //var txtVolume = document.getElementById("musicvolume").value;
         
-        if (txtplay == "0"){
-        	myChatAll.set({musicstart:0});
-        }else{
-        	myChatAll.set({musicstart:1});
-        }
+        //if (txtplay == "0"){
+        //	myChatAll.set({musicstart:0});
+        //}else{
+        //	myChatAll.set({musicstart:1});
+        //}
         //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight,weight:"0.1",Sittingtime:"16" ,Standtime:"41"});
         //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight});
       }
