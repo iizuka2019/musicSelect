@@ -145,10 +145,10 @@ $(function(){
       
       var myChatAll = db.ref("/id0083/");
       function changeData(){
-	//myChatAll.update({musicstart:0});
+	myChatAll.update({musicstart:0});
 
         var txtplay = document.getElementById("playstatus").value;
-        var txtVolume = document.getElementById("musicvolume").value;
+        //var txtVolume = document.getElementById("musicvolume").value;
         
         if (txtplay == "0"){
         	myChatAll.update({musicstart:0});
