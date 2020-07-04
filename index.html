@@ -112,9 +112,9 @@ $(function(){
         	//document.getElementById("musicstart").innerHTML = "--さいせいちゅう--"
         	document.getElementById("musicno").innerHTML =  "今は" + snapshot.child("musicno").val() + "番目の曲をサイセイしてるよ。";
         	document.getElementById("load").innerHTML ="<img src='svg-loaders/audio.svg'>";
-        	document.getElementById("play").innerHTML ="<img src='svg-loaders/resume.png' height='42' width='42'>";
-			
+        	document.getElementById("play").innerHTML ="<img src='svg-loaders/resume.png' height='42' width='42'>";			
         }
+	document.getElementById("playstatus").innerHTML =snapshot.child("musicstart").val()
 	      
       });
 
@@ -138,6 +138,28 @@ $(function(){
       });
     </script>
     
+	  
+    <script>
+    //書き込み処理
+      var db = firebase.database();
+      
+      var myChatAll = db.ref("/id0083/");
+      function changeData(){
+        var txtplay = document.getElementById("playstatus").value;
+        var txtVolume = document.getElementById("musicvolume").value;
+        
+        if (txtplay == "0"){
+        myChatAll.set({musicstart:0});
+        }else{
+        myChatAll.set({musicstart:1});
+        }
+        //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight,weight:"0.1",Sittingtime:"16" ,Standtime:"41"});
+        //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight});
+      }
+      
+    </script>
+	  
+	  
 <section class="container">
 
 
