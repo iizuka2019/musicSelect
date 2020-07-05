@@ -152,19 +152,19 @@ $(function(){
         
 	      
 	if(snapshot.child("musicstart").val()=="0") {
-        	document.getElementById("musicstart").innerHTML = "サイセイシテナイ..."	
-        	document.getElementById("load").innerHTML ="<img src='svg-loaders/oval.svg' height='42' width='42'>";
+        	//document.getElementById("musicstart").innerHTML = "サイセイシテナイ..."	
+        	document.getElementById("load").innerHTML ="<img src='svg-loaders/oval.svg' height='60' width='60'>";
 		document.getElementById("play").value ="▶";
         	document.getElementById("musicno").innerHTML = "";
         	//document.getElementById("play").innerHTML ="<img src='svg-loaders/play.png' height='42' width='42'>";
-		document.getElementById("playstatus").innerHTML ="0"
+		//document.getElementById("playstatus").innerHTML ="0"
 	}else{
         	//document.getElementById("musicstart").innerHTML = "--さいせいちゅう--"
         	document.getElementById("musicno").innerHTML =  "今は" + snapshot.child("musicno").val() + "番目の曲をサイセイしてるよ。";
-        	document.getElementById("load").innerHTML ="<img src='svg-loaders/audio.svg' height='42' width='42'>";
+        	document.getElementById("load").innerHTML ="<img src='svg-loaders/audio.svg' height='60' width='60'>";
 		document.getElementById("play").value ="||";
         	//document.getElementById("play").innerHTML ="<img src='svg-loaders/resume.png' height='42' width='42'>";			
-		document.getElementById("playstatus").innerHTML ="1"
+		//document.getElementById("playstatus").innerHTML ="1"
         }
 	      
       });
