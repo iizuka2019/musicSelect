@@ -154,7 +154,7 @@ $(function(){
 	if(snapshot.child("musicstart").val()=="0") {
         	document.getElementById("musicstart").innerHTML = "サイセイシテナイ..."	
         	document.getElementById("load").innerHTML =""
-        	document.getElementById("play").innerHTML ="▶";
+        	document.getElementById("play").innerHTML ="▷";
         	//document.getElementById("play").innerHTML ="<img src='svg-loaders/play.png' height='42' width='42'>";
 		document.getElementById("playstatus").innerHTML ="0"
 	}else{
@@ -300,9 +300,9 @@ $(function(){
         </tr>	  
 	<tr>
           <td colspan="2" align="center"> 
-		  <input type="button" class="btnControls" id="musicnobutton" value="◁" onclick="changeDataMusicLeft()">
+		  <input type="button" class="btnControls" id="musicnobutton" value="◁＜" onclick="changeDataMusicLeft()">
 		  <input type="button" class="btnControls" id="play" value="▶" onclick="changeData()">
-		  <input type="button" class="btnControls" id="musicnobutton" value="▷" onclick="changeDataMusicRight()">
+		  <input type="button" class="btnControls" id="musicnobutton" value="▷＞" onclick="changeDataMusicRight()">
 		</td>
 		
         </tr>	  
