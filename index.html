@@ -38,6 +38,26 @@
 }
 
 	    	    
+button.btnControls {
+    /* 文字サイズを1.4emに指定 */
+    font-size: 1.4em;
+
+    /* 文字の太さをboldに指定 */
+    font-weight: bold;
+
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 10px 30px;
+
+    /* 背景色を濃い青色に指定 */
+    background-color: #248;
+
+    /* 文字色を白色に指定 */
+    color: #fff;
+
+    /* ボーダーをなくす */
+    border-style: none;
+}
 	    
 	    
       p.wf-roundedmplus1c {font-family: "M PLUS Rounded 1c";}
@@ -158,6 +178,7 @@ $(function(){
 		
 	});
       }
+	    
       function changeDataMusicLeft(){
 	      
 	firebase.database().ref('/id0083/').once('value',function(snapshot) {
@@ -171,7 +192,22 @@ $(function(){
 		
 	});
       }
-             
+
+	    
+      function changeDataMusicRight(){
+	      
+	firebase.database().ref('/id0083/').once('value',function(snapshot) {
+		var iNo =snapshot.child("musicno").val();
+		
+		if (iNo >= "11"){
+			//myChatAll.update({musicstart:1});
+		}else{
+			myChatAll.update({musicno:iNo+1});
+		}
+		
+	});
+      }
+	    
  	function changeDatavolume(){
 	      
 	firebase.database().ref('/id0083/').once('value',function(snapshot) {
@@ -235,9 +271,9 @@ $(function(){
         </tr>	  
 	<tr>
           <td colspan="2" align="center"> 
-		  <input type="button" class="liffinput" id="musicnoleft" value="◁" onclick="changeDataMusicLeft()">
+		  <input type="button" class="btnControls" id="musicnoleft" value="◁" onclick="changeDataMusicLeft()">
 		<a href="" class="liffinput" id="play" onclick="changeData();return false;"></a>
-		  <input type="button" class="liffinput" id="musicnoleft" value="▷" onclick="changeData()">
+		  <input type="button" class="btnControls" id="musicnoright" value="▷" onclick="changeDataMusicRight()">
 		</td>
 		
         </tr>	  
