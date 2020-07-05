@@ -153,8 +153,9 @@ $(function(){
 	      
 	if(snapshot.child("musicstart").val()=="0") {
         	document.getElementById("musicstart").innerHTML = "サイセイシテナイ..."	
-        	document.getElementById("load").innerHTML =""
+        	document.getElementById("load").innerHTML ="<img src='svg-loaders/oval.svg'>";
 		document.getElementById("play").value ="▶";
+        	document.getElementById("musicno").innerHTML = "";
         	//document.getElementById("play").innerHTML ="<img src='svg-loaders/play.png' height='42' width='42'>";
 		document.getElementById("playstatus").innerHTML ="0"
 	}else{
