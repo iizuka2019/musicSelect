@@ -53,7 +53,7 @@ input#musicnobutton {
 
     /* 縦方向に10px、
      * 横方向に30pxの余白を指定 */
-    padding: 10px 30px;
+    padding: 1px 40px;
 
     /* 背景色を濃い青色に指定 */
     background-color: #44BBFF;
@@ -133,13 +133,15 @@ $(function(){
 	if(snapshot.child("musicstart").val()=="0") {
         	document.getElementById("musicstart").innerHTML = "サイセイシテナイ..."	
         	document.getElementById("load").innerHTML =""
-        	document.getElementById("play").innerHTML ="<img src='svg-loaders/play.png' height='42' width='42'>";
+        	document.getElementById("play").innerHTML ="▶";
+        	//document.getElementById("play").innerHTML ="<img src='svg-loaders/play.png' height='42' width='42'>";
 		document.getElementById("playstatus").innerHTML ="0"
 	}else{
         	//document.getElementById("musicstart").innerHTML = "--さいせいちゅう--"
         	document.getElementById("musicno").innerHTML =  "今は" + snapshot.child("musicno").val() + "番目の曲をサイセイしてるよ。";
         	document.getElementById("load").innerHTML ="<img src='svg-loaders/audio.svg'>";
-        	document.getElementById("play").innerHTML ="<img src='svg-loaders/resume.png' height='42' width='42'>";			
+        	document.getElementById("play").innerHTML ="||";			
+        	//document.getElementById("play").innerHTML ="<img src='svg-loaders/resume.png' height='42' width='42'>";			
 		document.getElementById("playstatus").innerHTML ="1"
         }
 	      
@@ -278,7 +280,7 @@ $(function(){
 	<tr>
           <td colspan="2" align="center"> 
 		  <input type="button" class="btnControls" id="musicnobutton" value="◁" onclick="changeDataMusicLeft()">
-		<a href="" class="liffinput" id="play" onclick="changeData();return false;"></a>
+		  <input type="button" class="btnControls" id="play" value="▶" onclick="changeData()">
 		  <input type="button" class="btnControls" id="musicnobutton" value="▷" onclick="changeDataMusicRight()">
 		</td>
 		
