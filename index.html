@@ -157,10 +157,19 @@ $(function(){
 		}
 		
 	});
-		       
+      }
+      function changeDataMusicLeft(){
+	      
+	firebase.database().ref('/id0083/').once('value',function(snapshot) {
+		var iNo =snapshot.child("musicno").val();
 		
-        //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight,weight:"0.1",Sittingtime:"16" ,Standtime:"41"});
-        //myChatAll.set({age:txtAge, genders:strGender,myweight:txtWeight});
+		if (iNo <= "1"){
+			//myChatAll.update({musicstart:1});
+		}else{
+			myChatAll.update({musicno:iNo-1});
+		}
+		
+	});
       }
              
  	function changeDatavolume(){
@@ -226,9 +235,9 @@ $(function(){
         </tr>	  
 	<tr>
           <td colspan="2" align="center"> 
-		  <input type="button" class="liffinput" id="play" value="◁" onclick="changeData()">
+		  <input type="button" class="liffinput" id="musicnoleft" value="◁" onclick="changeDataMusicLeft()">
 		<a href="" class="liffinput" id="play" onclick="changeData();return false;"></a>
-		  <input type="button" class="liffinput" id="play" value="▷" onclick="changeData()">
+		  <input type="button" class="liffinput" id="musicnoleft" value="▷" onclick="changeData()">
 		</td>
 		
         </tr>	  
