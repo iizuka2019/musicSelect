@@ -138,6 +138,7 @@ $(function(){
     <script>
     //読み込み処理
       var strDataW = '0';
+	    
       firebase.database().ref('/id0083sensor/').on('value',function(snapshot) {
         document.getElementById("distance").innerHTML = "距離:" + snapshot.child("distance").val();
         if(snapshot.child("stay").val()=="0") {
@@ -146,7 +147,7 @@ $(function(){
             document.getElementById("stay").innerHTML = "いるよ。"
         }
 	      
-      }
+      });
 
       firebase.database().ref('/id0083/').on('value',function(snapshot) {
 //        document.getElementById("distance").innerHTML = "距離:" + snapshot.child("distance").val();
