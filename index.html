@@ -200,6 +200,14 @@ $(function(){
       var db = firebase.database();
       
       var myChatAll = db.ref("/id0083/");
+	    
+	    
+
+	    
+    
+	    
+	    
+	    
       function changeData(){
 	      
 	firebase.database().ref('/id0083/').once('value',function(snapshot) {
@@ -223,6 +231,16 @@ $(function(){
 			//myChatAll.update({musicstart:1});
 		}else{
 			myChatAll.update({musicno:iNo-1});
+			
+			const audioArea = document.getElementById('sound');
+			const audios = ['https://iizuka2019.github.io/darekaa/mp3/001.mp3', 'https://iizuka2019.github.io/darekaa/mp3/002.mp3', 'https://iizuka2019.github.io/darekaa/mp3/009.mp3'];
+			const audioNo = Math.floor( Math.random() * audios.length)
+			audioArea.src = audios[audioNo];
+
+
+			// [ID:sound-file]の音声ファイルを再生[play()]する
+			document.getElementById( 'sound' ).play() ;
+
 		}
 		
 	});
@@ -309,10 +327,17 @@ $(function(){
 		  <input type="button" class="btnControls" id="musicnobutton" value="◁" onclick="changeDataMusicLeft()">
 		  <input type="button" class="btnControls" id="play" onclick="changeData()">
 		  <input type="button" class="btnControls" id="musicnobutton" value="▷" onclick="changeDataMusicRight()">
+
+			<audio id="sound" preload="auto">
+			    <source src="" type="audio/mp3" id='audioArea'>>
+			</audio>	  		  
 		</td>
 		
         </tr>	  
 	  
+	      
+	      
+	      
 	</table>
 </p>
 
