@@ -218,6 +218,11 @@ $(function(){
 			if(iNo== "4"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0004.mp3';}
 			if(iNo== "5"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0005.mp3';}
 			if(iNo== "6"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0006.mp3';}
+			if(iNo== "7"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0007.mp3';}
+			if(iNo== "8"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0008.mp3';}
+			if(iNo== "9"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0009.mp3';}
+			if(iNo== "10"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0010.mp3';}
+			if(iNo== "11"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0011.mp3';}
 			
 
 			// [ID:sound-file]の音声ファイルを再生[play()]する
@@ -236,13 +241,29 @@ $(function(){
 	      
 	firebase.database().ref('/id0083/').once('value',function(snapshot) {
 		var iNo =snapshot.child("musicno").val();
+		const audioArea = document.getElementById('sound');
+		var strStart =snapshot.child("musicstart").val();
 		
 		if (iNo <= "1"){
 			//myChatAll.update({musicstart:1});
 		}else{
-			myChatAll.update({musicno:iNo-1});
-			
+			var strNo =iNo-1;
+			myChatAll.update({musicno:strNo});
+			if (strStart == "1"){
+				if(strNo == "1"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0001.mp3';}
+				if(strNo== "2"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0002.mp3';}
+				if(strNo== "3"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0003.mp3';}
+				if(strNo== "4"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0004.mp3';}
+				if(strNo== "5"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0005.mp3';}
+				if(strNo== "6"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0006.mp3';}
+				if(strNo== "7"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0007.mp3';}
+				if(strNo== "8"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0008.mp3';}
+				if(strNo== "9"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0009.mp3';}
+				if(strNo== "10"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0010.mp3';}
+				if(strNo== "11"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0011.mp3';}
+			}
 
+			
 		}
 		
 	});
@@ -257,7 +278,22 @@ $(function(){
 		if (iNo >= "11"){
 			//myChatAll.update({musicstart:1});
 		}else{
-			myChatAll.update({musicno:iNo+1});
+			var strNo =iNo+1;
+			myChatAll.update({musicno:strNo});
+			if (strStart == "1"){
+				if(strNo == "1"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0001.mp3';}
+				if(strNo== "2"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0002.mp3';}
+				if(strNo== "3"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0003.mp3';}
+				if(strNo== "4"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0004.mp3';}
+				if(strNo== "5"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0005.mp3';}
+				if(strNo== "6"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0006.mp3';}
+				if(strNo== "7"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0007.mp3';}
+				if(strNo== "8"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0008.mp3';}
+				if(strNo== "9"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0009.mp3';}
+				if(strNo== "10"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0010.mp3';}
+				if(strNo== "11"){audioArea.src = 'https://iizuka2019.github.io/musicSelect/mp3/0011.mp3';}
+			}
+			
 		}
 		
 	});
